@@ -5,19 +5,16 @@ All agents, such as Claude Code, should keep `**/AGENTS.md` in mind.
 
 ## Project Type
 
-This is a **vanilla TypeScript web application template** (not a library) built with Vite. It uses direct DOM manipulation without any framework like React or Vue.
+This is a **vanilla TypeScript library template** built with Vite. It is designed to be bundled into ESM format for distribution as a package.
 
 ## Development Commands
 
 ```bash
-# Start development server (auto-opens browser to index.html)
+# Start development build in watch mode
 pnpm dev
 
-# Build for production (runs TypeScript compilation, then Vite build)
+# Build for production (outputs ESM to dist/)
 pnpm build
-
-# Preview production build locally
-pnpm preview
 
 # Format code
 pnpm format
@@ -25,16 +22,16 @@ pnpm format
 # Lint code
 pnpm lint
 
-# Run tests (Vitest with Playwright and Node environment)
+# Run unit tests (Vitest in Node environment)
 pnpm test
 ```
 
 ## Architecture
 
-- **Entry point**: `src/main.ts` - Initializes the application and renders to the `#app` div in `index.html`
+- **Entry point**: `src/index.ts` - The main entry point that exports the library's API.
 - **ES modules** throughout (`"type": "module"` in package.json)
-- **Direct DOM manipulation** using standard browser APIs
-- **Static assets**: Place in `public/` directory
+- **Output format**: Generates `.js` (ESM) files in the `dist/` directory.
+- **Type definitions**: Automatically generates `.d.ts` files using `vite-plugin-dts`.
 
 ## Coding Standards
 
@@ -45,12 +42,6 @@ See `docs/rules/` for TypeScript, testing, and tooling guidelines.
 - **Path alias**: `@/*` maps to `src/*` (configured in `tsconfig.base.json`)
 - **Project references**: Uses `tsconfig.json` with `app` and `node` references
 - **Strict mode** enabled
-
-## Styling
-
-- **Tailwind CSS v4** with new directive-based syntax: `@import "tailwindcss"`
-- Custom styles in `src/style.css` for layout and theming
-- PostCSS configured in `postcss.config.mjs`
 
 ## Package Manager
 

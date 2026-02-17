@@ -13,7 +13,7 @@ const resolve: Config["resolve"] = {
 };
 
 const testConfig: Config["test"] = {
-    coverage: {
+    coverage: { 
         enabled: true,
         include: ["src/**/*.ts"],
         provider: "v8",
@@ -31,8 +31,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: fileURLToPath(new URL("src/index.ts", import.meta.url)),
-            formats: ["es", "cjs"],
-            fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
+            formats: ["es"],
+            fileName: "index",
         },
         outDir: "dist",
         sourcemap: true,
