@@ -1,1 +1,6 @@
-console.log("Oh, hi! This is the entry point of the application.");
+/**
+ * Example function
+ */
+export function example() {
+    return "example";
+}
