@@ -2,14 +2,16 @@
     "compilerOptions": {
         "tsBuildInfoFile": "./node_modules/.cache/node.tsbuildinfo",
         "lib": ["ESNext", "DOM", "DOM.Iterable"],
-        "types": ["vite/client", "@types/node"]
+        "types": ["vite/client", "@types/node"],
+        "allowImportingTsExtensions": true
     },
     "include": [
         "./*.ts",
         "./*.js",
         "./*.mjs",
         // dotfiles
-        "./.simple-git-hooks.mjs"
+        "./.simple-git-hooks.mjs",
+        "scripts/**/*.ts"
     ],
     "extends": "./tsconfig.base.json"
 }
