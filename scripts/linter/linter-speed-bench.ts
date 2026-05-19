@@ -80,7 +80,7 @@ function getCleanedStats(data: number[]): { mean: number; stdev: number } {
 
     const q1 = sortedData[Math.floor(n / 4)];
     const q3 = sortedData[Math.floor((3 * n) / 4)];
-    if (!Number.isFinite(q1) || !Number.isFinite(q3)) {
+    if (q1 === undefined || q3 === undefined) {
         throw new Error("Failed to calculate quartiles for outlier detection.");
     }
     const iqr = q3 - q1;
