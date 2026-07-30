@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@concertypin/config':
+        specifier: ^0.1.0
+        version: 0.1.0(oxlint@1.66.0(oxlint-tsgolint@0.23.0))
       '@types/node':
         specifier: ^25.9.1
         version: 25.9.1
@@ -67,6 +70,12 @@ packages:
   '@bcoe/v8-coverage@1.0.2':
     resolution: {integrity: sha512-6zABk/ECA/QYSCQ1NGiVwwbQerUCZ+TQbp64Q3AgmfNvurHH0j8TtXa1qbShXA6qqkpAj4V5W8pP6mLe1mcMqA==}
     engines: {node: '>=18'}
+
+  '@concertypin/config@0.1.0':
+    resolution: {integrity: sha512-xZjY0+skOVRrTDzjKLblqnhUor2C6qm5Ovew6ElzgzxuFjqDWRvoXVsLOMSCLHxBA9ECe8ExO0uBZKtz6DbvTQ==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      oxlint: '>=1.47.0 <2'
 
   '@emnapi/core@1.10.0':
     resolution: {integrity: sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw==}
@@ -1403,6 +1412,10 @@ snapshots:
       '@babel/helper-validator-identifier': 7.28.5
 
   '@bcoe/v8-coverage@1.0.2': {}
+
+  '@concertypin/config@0.1.0(oxlint@1.66.0(oxlint-tsgolint@0.23.0))':
+    dependencies:
+      oxlint: 1.66.0(oxlint-tsgolint@0.23.0)
 
   '@emnapi/core@1.10.0':
     dependencies:
