@@ -5,6 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig, type UserConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { isExternalRuntimePackage } from "./scripts/external-packages";
 
 const resolve = {
     alias: {
@@ -45,6 +46,7 @@ export default defineConfig({
             formats: ["es"],
         },
         rolldownOptions: {
+            external: isExternalRuntimePackage,
             output: {
                 entryFileNames: "[name].js",
                 chunkFileNames: "internal/[name]-[hash].js",
