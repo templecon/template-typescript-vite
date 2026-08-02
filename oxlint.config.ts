@@ -1,5 +1,6 @@
 import { defineConfig } from "oxlint";
 import oxlintConfig from "@concertypin/config/oxlint";
+import oxlintScriptsConfig from "@concertypin/config/oxlint/scripts";
 export default defineConfig({
     $schema: "./node_modules/oxlint/configuration_schema.json",
     plugins: ["typescript", "unicorn", "import", "vitest", "promise"],
@@ -15,27 +16,13 @@ export default defineConfig({
         "**/.vscode/**",
         "**/.git/**",
     ],
-    overrides: [
-        {
-            files: ["**/*.d.ts"],
-            rules: {
-                "no-unused-vars": "off",
-            },
-        },
-        {
-            files: ["scripts/**/*.ts"],
-            rules: {
-                "no-console": "off",
-            },
-        },
-    ],
     options: {
         denyWarnings: true,
         reportUnusedDisableDirectives: "error",
         typeAware: true,
         typeCheck: true,
     },
-    extends: [oxlintConfig],
+    extends: [oxlintConfig, oxlintScriptsConfig],
     rules: {
         "typescript/no-deprecated": "error",
         "no-console": "warn",

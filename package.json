@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "author": {
         "name": "concertypin",
         "url": "https://github.com/concertypin"
@@ -38,7 +38,7 @@
         "node": ">=24"
     },
     "devDependencies": {
-        "@concertypin/config": "^0.1.0",
+        "@concertypin/config": "^0.1.2",
         "@types/node": "^25.9.1",
         "@vitest/coverage-v8": "^4.1.6",
         "cross-env": "^10.1.0",

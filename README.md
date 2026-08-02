@@ -9,12 +9,7 @@ git clone https://github.com/templecon/template-typescript-vite
 
 ## Requirements
 
-Node.js version 22.18.0 or higher is recommended, since it has basic TypeScript support, which is used on eslint.config.ts.
-Older versions will:
-
-- Older than v22.6.0: Not work, migrate Node version or eslint.config.ts to .js.
-- Between v22.6.0 and v22.18.0: Work, but require `--experimental-transform-types`(since v22.7.0) or `--experimental-strip-types`(since v22.6.0) flag on `NODE_OPTIONS` environment variable.
-- v22.18.0 or higher: Work without flags.
+Node.js 24 or higher is required. The templates run TypeScript configuration and hooks directly with Node's built-in type stripping.
 
 ## Conventions and Rules
 
