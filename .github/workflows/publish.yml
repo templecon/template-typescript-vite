@@ -1,9 +1,8 @@
 name: Publish
 
 on:
-  workflow_dispatch:
-  # push:
-  #   tags: ["v*"]
+  push:
+    tags: ["v*.*.*"]
 
 permissions:
   contents: read
@@ -17,42 +16,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
-      - uses: pnpm/action-setup@v6
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: "package.json"
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm exec prettier --check .
-      - run: pnpm run lint:check
-      - run: pnpm test
-      - run: pnpm build
+      - name: Set up pnpm and Node.js
+        uses: ./.github/actions/setup-pnpm
 
-      - name: Verify tag matches package version
-        env:
-          GITHUB_REF_TYPE: ${{ github.ref_type }}
-          GITHUB_REF_NAME: ${{ github.ref_name }}
-        run: |
-          if [ "$GITHUB_REF_TYPE" != "tag" ]; then
-              echo "Run this workflow from a v<package-version> tag."
-              exit 1
-          fi
-          if [[ "$GITHUB_REF_NAME" != v* ]]; then
-              echo "Tag must use the v<package-version> format."
-              exit 1
-          fi
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          TAG_VERSION="${GITHUB_REF_NAME#v}"
-          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
-              echo "Tag v$TAG_VERSION does not match package version $PACKAGE_VERSION"
-              exit 1
-          fi
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Ensure OIDC-capable npm CLI
-        run: |
-          npm install --global npm@latest
-          NPM_VERSION="$(npm --version)"
-          node -e "const [major, minor, patch] = process.argv[1].split('.').map(Number); if (major < 11 || (major === 11 && (minor < 5 || (minor === 5 && patch < 1)))) process.exit(1)" "$NPM_VERSION"
-          echo "npm version: $NPM_VERSION"
+      - name: Build library
+        run: pnpm build
 
-      - run: npm publish --access public
+      - name: Publish package
+        run: npm publish --access public
