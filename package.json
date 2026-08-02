@@ -38,7 +38,7 @@
         "node": ">=26"
     },
     "devDependencies": {
-        "@concertypin/config": "^0.1.2",
+        "@concertypin/config": "^0.2.0",
         "@types/node": "^25.9.1",
         "@vitest/coverage-v8": "^4.1.6",
         "cross-env": "^10.1.0",

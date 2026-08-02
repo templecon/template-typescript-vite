@@ -1,20 +1,18 @@
 /// <reference types="vitest/config" />
 
-import { type UserConfig, defineConfig } from "vite";
-import { fileURLToPath } from "node:url";
-import dts from "vite-plugin-dts";
 import { globSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { defineConfig, type UserConfig } from "vite";
+import dts from "vite-plugin-dts";
 
-type Config = Required<UserConfig>;
-
-const resolve: Config["resolve"] = {
+const resolve = {
     alias: {
         "@": fileURLToPath(new URL("src", import.meta.url)),
     },
-};
+} satisfies UserConfig["resolve"];
 
-const testConfig: Config["test"] = {
+const testConfig = {
     coverage: {
         enabled: true,
         include: ["src/**/*.ts"],
@@ -27,24 +25,24 @@ const testConfig: Config["test"] = {
     globals: true,
     include: ["tests/**/*.test.ts"],
     setupFiles: "./tests/setup.ts",
-};
+} satisfies NonNullable<UserConfig["test"]>;
 
-const entries = globSync("src/**/index.ts").reduce(
-    (acc, file) => {
+const entries = Object.fromEntries(
+    globSync("src/**/index.ts").map((file) => {
         const relativePath = path.relative("src", file);
         const entryName = relativePath.replace(/\.ts$/, "").replace(/\\/g, "/");
 
-        acc[entryName] = fileURLToPath(new URL(file, import.meta.url));
-        return acc;
-    },
-    {} as Record<string, string>
+        return [
+            entryName,
+            fileURLToPath(new URL(file, import.meta.url)),
+        ] satisfies [string, string];
+    })
 );
 export default defineConfig({
     build: {
         lib: {
             entry: entries,
             formats: ["es"],
-            fileName: "index",
         },
         rolldownOptions: {
             output: {
