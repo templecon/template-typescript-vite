@@ -9,7 +9,7 @@
     "endOfLine": "lf",
     "overrides": [
         {
-            "files": ["*.yml"],
+            "files": ["*.yaml", "*.yml"],
             "options": {
                 "tabWidth": 2
             }

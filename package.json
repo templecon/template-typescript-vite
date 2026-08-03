@@ -3,7 +3,7 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "author": {
         "name": "concertypin",
         "url": "https://github.com/concertypin"
@@ -31,14 +31,14 @@
         "lint:check": "oxlint .",
         "lint": "oxlint . --fix",
         "postinstall": "pnpm exec simple-git-hooks",
-        "check": "pnpm run format && pnpm run lint && pnpm run test && git add -u",
-        "pre-commit": "pnpm run check",
+        "check": "pnpm run format && pnpm run lint && pnpm run test",
         "test": "vitest run"
     },
     "engines": {
         "node": ">=24"
     },
     "devDependencies": {
+        "@concertypin/config": "^0.1.2",
         "@types/node": "^25.9.1",
         "@vitest/coverage-v8": "^4.1.6",
         "cross-env": "^10.1.0",
