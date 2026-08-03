@@ -3,13 +3,17 @@
 
 # How to use
 
-```
+```bash
 git clone https://github.com/templecon/template-typescript-vite
+cd template-typescript-vite
+pnpm install
 ```
 
 ## Requirements
 
-Node.js 24 or higher is required. The templates run TypeScript configuration and hooks directly with Node's built-in type stripping.
+Node.js 26 or higher is required. The template runs TypeScript configuration and hooks directly with Node's built-in type stripping.
+
+The repository pins its package manager in the `packageManager` field of `package.json` (pnpm 10.17.1). Install that exact version with `npm install -g pnpm@10.17.1` before running `pnpm install` and `pnpm run check`. If Corepack has been installed separately, `corepack prepare pnpm@10.17.1 --activate` is an equivalent option.
 
 ## Conventions and Rules
 
