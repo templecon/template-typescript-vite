@@ -28,6 +28,7 @@
         "dev": "vite build --watch",
         "build": "vite build",
         "format": "prettier --write . --cache --list-different",
+        "format:check": "prettier --check . --cache",
         "lint:check": "oxlint .",
         "lint": "oxlint . --fix",
         "postinstall": "pnpm exec simple-git-hooks",
@@ -38,7 +39,7 @@
         "node": ">=26"
     },
     "devDependencies": {
-        "@concertypin/config": "^0.1.2",
+        "@concertypin/config": "^0.2.0",
         "@types/node": "^25.9.1",
         "@vitest/coverage-v8": "^4.1.6",
         "cross-env": "^10.1.0",
