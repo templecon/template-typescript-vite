@@ -1,10 +1,11 @@
+import { execFile } from "node:child_process";
 import { existsSync } from "node:fs";
 import { globSync } from "node:fs";
-import { execFile } from "node:child_process";
 import { relative, resolve } from "node:path";
 import { promisify } from "node:util";
-import { beforeAll, describe, expect, it } from "vitest";
+
 import { build } from "vite";
+import { beforeAll, describe, expect, it } from "vitest";
 
 const execFileAsync = promisify(execFile);
 const projectRoot = resolve(import.meta.dirname, "../..");

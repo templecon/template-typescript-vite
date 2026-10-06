@@ -3,9 +3,11 @@
 import { globSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+
 import { defineConfig, type UserConfig } from "vite";
 import dts from "vite-plugin-dts";
-import { isExternalRuntimePackage } from "./scripts/external-packages";
+
+import { isExternalRuntimePackage } from "./scripts/external-packages.ts";
 
 const resolve = {
     alias: {

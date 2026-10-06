@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { example } from "@/index";
+
 import { featureExample } from "@/feature";
+import { example } from "@/index";
 
 describe("example test", () => {
     it("should return example", () => {

@@ -1,5 +1,5 @@
+import createOxlintConfig from "@concertypin/config/oxlint";
 import { defineConfig } from "oxlint";
-import oxlintConfig from "@concertypin/config/oxlint";
 export default defineConfig({
     $schema: "./node_modules/oxlint/configuration_schema.json",
     plugins: ["typescript", "unicorn", "import", "vitest", "promise"],
@@ -21,7 +21,7 @@ export default defineConfig({
         typeAware: true,
         typeCheck: true,
     },
-    extends: [oxlintConfig],
+    extends: [createOxlintConfig()],
     rules: {
         "typescript/no-deprecated": "error",
         "no-console": "warn",
