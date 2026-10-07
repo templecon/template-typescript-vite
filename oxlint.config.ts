@@ -1,4 +1,4 @@
-import createOxlintConfig from "@concertypin/config/oxlint";
+import baseConfig from "@concertypin/config/oxlint";
 import { defineConfig } from "oxlint";
 export default defineConfig({
     plugins: ["typescript", "unicorn", "import", "vitest", "promise"],
@@ -20,7 +20,7 @@ export default defineConfig({
         typeAware: true,
         typeCheck: true,
     },
-    extends: [createOxlintConfig()],
+    extends: [baseConfig()],
     rules: {
         "typescript/no-deprecated": "error",
         "no-console": "warn",
