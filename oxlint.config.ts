@@ -21,8 +21,4 @@ export default defineConfig({
         typeCheck: true,
     },
     extends: [baseConfig()],
-    rules: {
-        "typescript/no-deprecated": "error",
-        "no-console": "warn",
-    },
 });
