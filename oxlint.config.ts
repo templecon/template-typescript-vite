@@ -1,7 +1,6 @@
 import createOxlintConfig from "@concertypin/config/oxlint";
 import { defineConfig } from "oxlint";
 export default defineConfig({
-    $schema: "./node_modules/oxlint/configuration_schema.json",
     plugins: ["typescript", "unicorn", "import", "vitest", "promise"],
     env: {
         builtin: true,
